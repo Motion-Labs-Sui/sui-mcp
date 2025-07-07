@@ -1,24 +1,20 @@
-"use client"
+'use client';
 
-import { useState } from "react"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
+import { useState } from 'react'
+import { Button } from '@/components/ui/button'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import { Badge } from '@/components/ui/badge'
 import {
   Code2,
   BookOpen,
-  Wrench,
-  AlertCircle,
-  Shield,
   Copy,
   Check,
   Github,
   ExternalLink,
   Terminal,
   Zap,
-  Search,
   MessageSquare,
-} from "lucide-react"
+} from 'lucide-react'
 
 export default function SuiDeveloperMCP() {
   const [copiedSetup, setCopiedSetup] = useState(false)
@@ -27,10 +23,7 @@ export default function SuiDeveloperMCP() {
   "mcpServers": {
     "sui-developer": {
       "command": "npx",
-      "args": ["@sui-dev/mcp-server"],
-      "env": {
-        "SUI_NETWORK": "mainnet"
-      }
+      "args": ["mcp-remote", "https://sui-developer-mcp.vercel.app/mcp"]
     }
   }
 }`
@@ -41,68 +34,62 @@ export default function SuiDeveloperMCP() {
     setTimeout(() => setCopiedSetup(false), 2000)
   }
 
-  const features = [
-    {
-      icon: Code2,
-      title: "Expert Move Development Help",
-      description: "Get guidance on smart contract patterns, syntax, and Move language best practices",
-    },
-    {
-      icon: BookOpen,
-      title: "Documentation Search",
-      description: "Search through comprehensive Sui documentation with AI-powered context understanding",
-    },
-    {
-      icon: Wrench,
-      title: "SDK Integration Help",
-      description: "TypeScript and Rust SDK assistance with code examples and implementation guidance",
-    },
-    {
-      icon: AlertCircle,
-      title: "Error Explanation",
-      description: "Decode and solve Sui-specific errors with detailed explanations and solutions",
-    },
-    {
-      icon: Shield,
-      title: "Best Practices Guide",
-      description: "Security, performance, and architecture recommendations for production-ready dApps",
-    },
-    {
-      icon: Search,
-      title: "Code Analysis",
-      description: "Analyze your Move code for potential issues, optimizations, and improvements",
-    },
-  ]
-
   const tools = [
     {
-      name: "sui-docs-search",
-      description: "Search and retrieve relevant documentation",
-      example: "Find information about object ownership models",
+      name: 'Ask_Sui_Move_Expert',
+      description: 'Get expert help with Sui Move development, smart contract patterns, and best practices',
+      example: 'How do I implement a staking mechanism with time-locked rewards?'
     },
     {
-      name: "move-analyzer",
-      description: "Analyze Move code for best practices",
-      example: "Review smart contract for security vulnerabilities",
+      name: 'Sui_Documentation_Search', 
+      description: 'Search through Sui\'s comprehensive documentation with AI context',
+      example: 'Find information about dynamic fields and object composition'
     },
     {
-      name: "sdk-helper",
-      description: "Generate SDK integration examples",
-      example: "Show how to interact with a custom Move module",
+      name: 'Ask_Sui_SDK_Expert',
+      description: 'TypeScript/Rust SDK assistance with code examples and patterns', 
+      example: 'Show me how to create and sign a programmable transaction'
     },
     {
-      name: "error-decoder",
-      description: "Explain Sui transaction errors",
-      example: "Decode 'InsufficientGas' error with solutions",
+      name: 'Sui_Error_Explainer',
+      description: 'Decode and solve Sui-specific errors with detailed solutions',
+      example: 'Explain \'InvalidObjectOwner\' error and how to fix it'
     },
+    {
+      name: 'Sui_Best_Practices_Guide',
+      description: 'Security, performance, and architecture recommendations',
+      example: 'What are the security best practices for DeFi protocols on Sui?'
+    }
   ]
 
   const usageExamples = [
-    "How do I create an NFT collection in Sui Move?",
-    "Help me debug this transaction error: 'ObjectNotFound'",
-    "What are security best practices for DeFi on Sui?",
-    "Show me how to implement a marketplace smart contract",
-    "How do I optimize gas usage in my Move functions?",
+    {
+      category: 'Move Development',
+      examples: [
+        'How do I create an NFT collection in Sui Move?',
+        'Show me how to implement a marketplace smart contract',
+        'What\'s the best way to handle object ownership in my game?',
+        'Help me understand capabilities pattern for access control'
+      ]
+    },
+    {
+      category: 'SDK Integration', 
+      examples: [
+        'How do I build a transaction with multiple move calls?',
+        'Show me TypeScript code to interact with my Move module',
+        'Help me set up Sui client in my React app',
+        'What\'s the proper way to handle gas estimation?'
+      ]
+    },
+    {
+      category: 'Debugging',
+      examples: [
+        'Why am I getting \'InsufficientGas\' error?',
+        'My transaction failed with \'ObjectNotFound\' - what went wrong?',
+        'Help me debug this Move compilation error',
+        'How can I optimize this transaction to use less gas?'
+      ]
+    }
   ]
 
   return (
@@ -163,33 +150,6 @@ export default function SuiDeveloperMCP() {
         </div>
       </section>
 
-      {/* Features Grid */}
-      <section className="py-24 bg-slate-800/50">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4">Powerful Development Features</h2>
-            <p className="text-xl text-slate-400 max-w-2xl mx-auto">
-              Everything you need to build exceptional dApps on Sui blockchain
-            </p>
-          </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {features.map((feature, index) => (
-              <Card key={index} className="bg-slate-800 border-slate-700 hover:border-blue-500/50 transition-colors">
-                <CardHeader>
-                  <div className="w-12 h-12 rounded-lg bg-blue-500/20 flex items-center justify-center mb-4">
-                    <feature.icon className="h-6 w-6 text-blue-400" />
-                  </div>
-                  <CardTitle className="text-white">{feature.title}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <CardDescription className="text-slate-400">{feature.description}</CardDescription>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Quick Setup */}
       <section className="py-24">
         <div className="container mx-auto px-4">
@@ -244,8 +204,72 @@ export default function SuiDeveloperMCP() {
         </div>
       </section>
 
+      {/* IDE-Specific Setup Instructions */}
+      <section id="ide-specific-setup-instructions" className="py-24 bg-slate-800/50">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold mb-4">IDE Setup Instructions</h2>
+            <p className="text-xl text-slate-400">Follow these steps to integrate Sui Developer MCP with your favorite IDE</p>
+          </div>
+          <div className="max-w-4xl mx-auto">
+            <Card className="bg-slate-800 border-slate-700">
+              <CardHeader>
+                <CardTitle>Claude Desktop Setup</CardTitle>
+              </CardHeader>
+              <CardContent className="text-slate-400">
+                <p className="mb-2">Location of config file:</p>
+                <ul className="list-disc list-inside mb-4">
+                  <li>Mac: ~/Library/Application Support/Claude/claude_desktop_config.json</li>
+                  <li>Windows: %APPDATA%\Claude\claude_desktop_config.json</li>
+                  <li>Linux: ~/.config/Claude/claude_desktop_config.json</li>
+                </ul>
+                <p className="mb-2">Steps:</p>
+                <ol className="list-decimal list-inside">
+                  <li>Open the config file (create if it doesn&apos;t exist)</li>
+                  <li>Add the MCP server configuration</li>
+                  <li>Restart Claude Desktop</li>
+                  <li>Test by asking: &quot;What Sui development tools do you have available?&quot;</li>
+                </ol>
+              </CardContent>
+            </Card>
+            <Card className="mt-8 bg-slate-800 border-slate-700">
+              <CardHeader>
+                <CardTitle>Windsurf Setup</CardTitle>
+              </CardHeader>
+              <CardContent className="text-slate-400">
+                <p className="mb-2">Steps:</p>
+                <ol className="list-decimal list-inside">
+                  <li>Open Windsurf</li>
+                  <li>Press Cmd/Ctrl + Shift + P to open command palette</li>
+                  <li>Type &quot;MCP: Configure Servers&quot;</li>
+                  <li>Add the server configuration</li>
+                  <li>Restart Windsurf</li>
+                  <li>Test in a new chat</li>
+                </ol>
+              </CardContent>
+            </Card>
+            <Card className="mt-8 bg-slate-800 border-slate-700">
+              <CardHeader>
+                <CardTitle>Cursor Setup</CardTitle>
+              </CardHeader>
+              <CardContent className="text-slate-400">
+                <p className="mb-2">Steps:</p>
+                <ol className="list-decimal list-inside">
+                  <li>Open Cursor Settings (Cmd/Ctrl + ,)</li>
+                  <li>Go to &quot;Features&quot; → &quot;Model Context Protocol&quot;</li>
+                  <li>Click &quot;Add MCP Server&quot;</li>
+                  <li>Paste the configuration</li>
+                  <li>Enable the server</li>
+                  <li>Test in Cursor Chat</li>
+                </ol>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
       {/* Usage Examples */}
-      <section className="py-24 bg-slate-800/50">
+      <section className="py-24">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-16">
@@ -253,11 +277,18 @@ export default function SuiDeveloperMCP() {
               <p className="text-xl text-slate-400">Get instant help with common development questions</p>
             </div>
 
-            <div className="space-y-4">
-              {usageExamples.map((example, index) => (
-                <div key={index} className="flex items-start gap-4 p-4 bg-slate-800 rounded-lg border border-slate-700">
-                  <MessageSquare className="h-5 w-5 text-blue-400 mt-1 flex-shrink-0" />
-                  <p className="text-slate-300">{example}</p>
+            <div className="space-y-8">
+              {usageExamples.map((category, index) => (
+                <div key={index}>
+                  <h3 className="text-2xl font-bold mb-4 text-teal-400">{category.category}</h3>
+                  <div className="space-y-4">
+                    {category.examples.map((example, i) => (
+                      <div key={i} className="flex items-start gap-4 p-4 bg-slate-800 rounded-lg border border-slate-700">
+                        <MessageSquare className="h-5 w-5 text-blue-400 mt-1 flex-shrink-0" />
+                        <p className="text-slate-300">{example}</p>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               ))}
             </div>
@@ -266,7 +297,7 @@ export default function SuiDeveloperMCP() {
       </section>
 
       {/* Tools Showcase */}
-      <section className="py-24">
+      <section className="py-24 bg-slate-800/50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold mb-4">Available Tools</h2>
@@ -294,6 +325,52 @@ export default function SuiDeveloperMCP() {
         </div>
       </section>
 
+      {/* Troubleshooting Section */}
+      <section className="py-24">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl font-bold mb-4">Troubleshooting</h2>
+              <p className="text-xl text-slate-400">Having issues? Check these common solutions.</p>
+            </div>
+            <div className="space-y-4">
+              <Card className="bg-slate-800 border-slate-700">
+                <CardHeader>
+                  <CardTitle>&quot;MCP server not found&quot;</CardTitle>
+                </CardHeader>
+                <CardContent className="text-slate-400">
+                  <p>Make sure you&apos;ve restarted your IDE after adding the config.</p>
+                </CardContent>
+              </Card>
+              <Card className="bg-slate-800 border-slate-700">
+                <CardHeader>
+                  <CardTitle>&quot;Connection failed&quot;</CardTitle>
+                </CardHeader>
+                <CardContent className="text-slate-400">
+                  <p>Check that the URL is correct and accessible.</p>
+                </CardContent>
+              </Card>
+              <Card className="bg-slate-800 border-slate-700">
+                <CardHeader>
+                  <CardTitle>&quot;No tools available&quot;</CardTitle>
+                </CardHeader>
+                <CardContent className="text-slate-400">
+                  <p>Verify the config JSON syntax is valid.</p>
+                </CardContent>
+              </Card>
+              <Card className="bg-slate-800 border-slate-700">
+                <CardHeader>
+                  <CardTitle>&quot;Permission denied&quot;</CardTitle>
+                </CardHeader>
+                <CardContent className="text-slate-400">
+                  <p>Ensure your IDE has internet access.</p>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Footer */}
       <footer className="py-16 bg-slate-900 border-t border-slate-800">
         <div className="container mx-auto px-4">
@@ -306,18 +383,24 @@ export default function SuiDeveloperMCP() {
             </div>
 
             <div className="flex gap-6">
-              <Button variant="ghost" size="sm" className="text-slate-400 hover:text-white">
-                <Github className="mr-2 h-4 w-4" />
-                GitHub
-              </Button>
-              <Button variant="ghost" size="sm" className="text-slate-400 hover:text-white">
-                <BookOpen className="mr-2 h-4 w-4" />
-                Documentation
-              </Button>
-              <Button variant="ghost" size="sm" className="text-slate-400 hover:text-white">
-                <ExternalLink className="mr-2 h-4 w-4" />
-                Sui Network
-              </Button>
+              <a href="https://github.com/MotionEcosystem/sui-developer-mcp" target="_blank" rel="noopener noreferrer">
+                <Button variant="ghost" size="sm" className="text-slate-400 hover:text-white">
+                  <Github className="mr-2 h-4 w-4" />
+                  GitHub
+                </Button>
+              </a>
+              <a href="#ide-specific-setup-instructions">
+                <Button variant="ghost" size="sm" className="text-slate-400 hover:text-white">
+                  <BookOpen className="mr-2 h-4 w-4" />
+                  Documentation
+                </Button>
+              </a>
+              <a href="https://sui.io" target="_blank" rel="noopener noreferrer">
+                <Button variant="ghost" size="sm" className="text-slate-400 hover:text-white">
+                  <ExternalLink className="mr-2 h-4 w-4" />
+                  Sui Network
+                </Button>
+              </a>
             </div>
           </div>
 

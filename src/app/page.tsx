@@ -150,7 +150,7 @@ export default function SuiDeveloperMCP() {
               <div className="p-6 font-mono text-sm">
                 <div className="text-purple-400">module</div>
                 <div className="text-blue-400 ml-4">nft_collection::collection {`{`}</div>
-                <div className="text-gray-400 ml-8">// AI-assisted Move development</div>
+                <div className="text-gray-400 ml-8">{/* AI-assisted Move development */}</div>
                 <div className="text-green-400 ml-8">
                   use sui::object::{`{`}`self`, UID{`}`};
                 </div>
